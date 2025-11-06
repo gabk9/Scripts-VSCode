@@ -65,7 +65,7 @@ Tudo foi feito para ser **simples de editar e expandir** — basta abrir o `task
 ## Observações
 
 - Os scripts são **independentes por sistema operacional** — você pode usar apenas o que precisar.
-- O tasks.json é compatível com **VSCode em qualquer plataforma**.
+- O `tasks.json` é compatível com **VSCode em qualquer plataforma**.
 - O repositório serve como modelo base, podendo ser clonado e modificado para uso pessoal.
 
 ---
