@@ -77,6 +77,6 @@ Este projeto está sob a licença **MIT**, permitindo uso, modificação e redis
 ---
 
 
-### Feito por Gabriel 🧠
+### Feito por **Gabriel** 
 
-💡 Sinta-se livre para contribuir, sugerir melhorias ou adicionar suporte a novas linguagens!
+*Sinta-se livre para contribuir, sugerir melhorias ou adicionar suporte a novas linguagens!*
