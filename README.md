@@ -28,6 +28,7 @@ Esses scripts oferecem suporte para múltiplas linguagens de programação, tant
 - 🟥 **COBOL**
 - 🟫 **Fortran**
 - 🧩 **PHP**
+- 🩵 **GO**
 - 🟠 **Rust** *(apenas Linux)*
 
 ---
