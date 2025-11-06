@@ -25,11 +25,10 @@ Esses scripts oferecem suporte para múltiplas linguagens de programação, tant
 - 🟪 **Java**
 - 🔵 **JavaScript / Node.js**
 - ⚪ **Assembly (NASM / x86-64)**
-- 🟠 **Batch / Shell Script**
 - 🟥 **COBOL**
 - 🟫 **Fortran**
 - 🧩 **PHP**
-- 🦀 **Rust** *(apenas Linux)*
+- 🟠 **Rust** *(apenas Linux)*
 
 ---
 
