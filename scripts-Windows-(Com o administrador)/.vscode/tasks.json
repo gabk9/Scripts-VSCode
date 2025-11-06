@@ -5,7 +5,7 @@
     {
       "label": "Run current file",
       "type": "shell",
-      "command": "DIGITE AQUI O ENDEREÇO DO RUN.BAT, ex: 'C:\\users\\gabriel\\Documentos\\PROGRAMACAO\\run.bat'",
+      "command": "digite aquio o endereço do 'run.bat', ex: 'C:\\users\\gabriel\\Documentos\\PROGRAMACAO\\run.bat'",
       "args": ["${file}"],
       "group": {
         "kind": "build",
