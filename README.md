@@ -73,3 +73,8 @@ Tudo foi feito para ser **simples de editar e expandir** — basta abrir o `task
 ## Licença
 
 Este projeto está sob a licença **MIT**, permitindo uso, modificação e redistribuição livre, desde que os créditos sejam mantidos.
+
+---
+
+###Feito por Gabriel 🧠
+💡 Sinta-se livre para contribuir, sugerir melhorias ou adicionar suporte a novas linguagens!
