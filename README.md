@@ -1,4 +1,4 @@
-# ⚙️ Scripts-VSCode
+# Scripts-VSCode
 
 Scripts e configurações para facilitar o uso do **Visual Studio Code** com múltiplas linguagens e ambientes.  
 Este repositório contém arquivos de automação (`tasks.json`, `run.bat`, `run.sh`) que simplificam o processo de **compilação e execução** de projetos diretamente pelo VSCode.
