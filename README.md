@@ -58,7 +58,7 @@ Tudo foi feito para ser **simples de editar e expandir** — basta abrir o `task
 1. Copie o `run.sh` e a pasta `.vscode` para o diretório do seu projeto.
 2. Dê permissão de execução com:
    ```bash
-   chmod +x run.sh
+   sudo chmod +x run.sh
 
 ---
 
