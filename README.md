@@ -53,6 +53,9 @@ Tudo foi feito para ser **simples de editar e expandir** — basta abrir o `task
 1. Copie o `run.bat` e a pasta `.vscode` para o diretório do seu projeto.
 2. No VSCode, pressione `Ctrl + Shift + B` para executar a tarefa configurada.
 3. O script irá compilar e/ou executar o código automaticamente.
+4. Lembre que precise dos compiladores no path, **caso tenha o administrador** na maquina.
+5. **Caso não tenha o Administrador**, crie uma pasta em que você vai guardar os compiladores, recomendo `COMPILADORES` como nome, caso conntrario modifique no run.bat.
+6. Lembre de modificar o nome da pasta dos compiladores, no run.bat ou na pasta dos compiladores somente para funcionar, **caso não tenha o administrador**.
 
 ### 🐧 Linux
 1. Copie o `run.sh` e a pasta `.vscode` para o diretório do seu projeto.
