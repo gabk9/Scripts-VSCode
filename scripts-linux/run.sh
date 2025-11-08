@@ -27,7 +27,7 @@ case "$ext" in
     c)
         echo "Compilando e executando C..."
         if [[ -f "main.c" ]]; then
-            gcc main.c libs/terminal.c libs/aux.c -o main -lm && ./main
+            gcc main.c libs/terminal.c libs/aux.c libs/s_math.c -o main -lm && ./main
         else
             echo "→ Compilando arquivo especificado..."
             gcc "$arquivo" -o "$(basename "$nomeArquivo")" -lm && "./$(basename "$nomeArquivo")"
