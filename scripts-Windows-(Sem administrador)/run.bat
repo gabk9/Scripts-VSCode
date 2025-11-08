@@ -9,9 +9,9 @@ set "ARQUIVO=%~1"
 set "EXT=%~x1"
 set "EXT=%EXT:"=%"   REM remove aspas
 
-REM Caminhos baseados na posição deste script: C:\PROGRAMACAO\
+REM Caminhos baseados na posição deste script: H:\PROGRAMACAO\
 set "BASE=%~dp0"
-set "DIR_COMP=%BASE%C:\COMPILADORES\"
+set "DIR_COMP=%BASE%..\COMPILADORES"
 
 echo Arquivo: %ARQUIVO%
 echo Extensao: %EXT%
@@ -35,7 +35,7 @@ if /i "%EXT%"==".c" (
     
     REM Verifica se é o arquivo main.c para adicionar bibliotecas especiais
     if /i "%~nx1"=="main.c" (
-        "%DIR_COMP%\MinGW\bin\gcc.exe" libs/aux.c libs/terminal.c -o "%~dp1%~n1.exe" -Ilibs
+        "%DIR_COMP%\MinGW\bin\gcc.exe" libs/aux.c libs/terminal.c libs/s_math.c -o "%~dp1%~n1.exe" -Ilibs
     ) else (
         REM Compilacao normal para outros arquivos C
         "%DIR_COMP%\MinGW\bin\gcc.exe" "%ARQUIVO%" -o "%~dp1%~n1.exe"
