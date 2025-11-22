@@ -9,7 +9,7 @@ if [[ -z "$arquivo" ]]; then
     echo "Uso: ./run.sh <arquivo.c|.cpp|.py|.php|.js|.asm|.java|.go|.cob|.f90|.rs>"
     exit 1
 fi
-S
+
 # Verifica se o arquivo existe
 if [[ ! -f "$arquivo" ]]; then
     echo "Erro: arquivo '$arquivo' não encontrado."
