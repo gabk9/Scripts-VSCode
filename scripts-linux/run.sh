@@ -26,12 +26,7 @@ cd "$(dirname "$arquivo")" || exit 1
 case "$ext" in
     c)
         echo "Compilando e executando C..."
-        if [[ -f "main.c" ]]; then
-            gcc main.c libs/terminal.c libs/aux.c libs/s_math.c -o main -lm && ./main
-        else
-            echo "→ Compilando arquivo especificado..."
-            gcc "$arquivo" -o "$(basename "$nomeArquivo")" -lm && "./$(basename "$nomeArquivo")"
-        fi
+        gcc "$arquivo" -o "$(basename "$nomeArquivo")" -lm && "./$(basename "$nomeArquivo")"
         ;;
     cpp)
         echo "Compilando e executando C++..."
