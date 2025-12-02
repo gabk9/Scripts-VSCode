@@ -48,13 +48,7 @@ REM ---------------------------
 if /i "%ext%"==".c" (
     echo Compilando C...
 
-    REM Se for main.c, compile também os outros arquivos
-    if /i "%nomeArquivo%"=="main" (
-        gcc "%arquivo%" libs/aux.c libs/terminal.c -o "%nomeArquivo%.exe" -Ilibs
-    ) else (
-        REM Para outros arquivos, compile sozinho
-        gcc "%arquivo%" -o "%nomeArquivo%.exe"
-    )
+    cc "%arquivo%" -o "%nomeArquivo%.exe"
 
     REM Verifica se a compilação falhou
     if errorlevel 1 (
@@ -214,3 +208,4 @@ echo.
 pause
 popd
 exit /b
+
