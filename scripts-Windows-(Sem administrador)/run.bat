@@ -33,13 +33,7 @@ REM ===============================
 if /i "%EXT%"==".c" (
     set "PATH=%DIR_COMP%\MinGW\bin;%PATH%"
     
-    REM Verifica se é o arquivo main.c para adicionar bibliotecas especiais
-    if /i "%~nx1"=="main.c" (
-        "%DIR_COMP%\MinGW\bin\gcc.exe" libs/aux.c libs/terminal.c libs/s_math.c -o "%~dp1%~n1.exe" -Ilibs
-    ) else (
-        REM Compilacao normal para outros arquivos C
-        "%DIR_COMP%\MinGW\bin\gcc.exe" "%ARQUIVO%" -o "%~dp1%~n1.exe"
-    )
+    "%DIR_COMP%\MinGW\bin\gcc.exe" "%ARQUIVO%" -o "%~dp1%~n1.exe"
     
     if errorlevel 1 (
         echo Erro na compilacao do C/C++.
@@ -190,4 +184,5 @@ REM EXTENSAO NAO SUPORTADA
 REM ===============================
 echo Extensao nao suportada: %EXT%
 pause
+
 exit
