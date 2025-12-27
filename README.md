@@ -1,23 +1,23 @@
 # Scripts-VSCode
 
-Scripts e configurações para facilitar o uso do **Visual Studio Code** com múltiplas linguagens e ambientes.  
-Este repositório contém arquivos de automação (`tasks.json`, `run.bat`, `run.sh`) que simplificam o processo de **compilação e execução** de projetos diretamente pelo VSCode.
+Scripts and configurations to facilitate using **Visual Studio Code** with multiple languages and environments.  
+This repository contains automation files (`tasks.json`, `run.bat`, `run.sh`) that simplify the process of **compiling and running** projects directly from VSCode.
 
 ---
 
-## Estrutura do Repositório
+## Repository Structure
 
-- `.vscode/tasks.json` → Contém as tarefas automatizadas do VSCode.  
-- `run.bat` → Script para execução no **Windows**.  
-- `run.sh` → Script para execução no **Linux**.  
+- `.vscode/tasks.json` → Contains the automated tasks for VSCode.  
+- `run.bat` → Script for execution on **Windows**.  
+- `run.sh` → Script for execution on **Linux**.  
 
-Cada script foi configurado para detectar a linguagem automaticamente (quando possível) e executar o comando apropriado para **compilar** e/ou **rodar** o código.
+Each script is configured to automatically detect the language (when possible) and run the appropriate command to **compile** and/or **execute** the code.
 
 ---
 
-## Linguagens Suportadas
+## Supported Languages
 
-Esses scripts oferecem suporte para múltiplas linguagens de programação, tanto no **Windows** quanto no **Linux**:
+These scripts support multiple programming languages on both **Windows** and **Linux**:
 
 - 🟦 **C**
 - 🟩 **C++**
@@ -29,57 +29,36 @@ Esses scripts oferecem suporte para múltiplas linguagens de programação, tant
 - 🟫 **Fortran**
 - 🧩 **PHP**
 - 🩵 **GO**
-- 🟠 **Rust** *(apenas Linux)*
+- 🟠 **Rust** *(Linux only)*
 
 ---
 
-## Personalização
+## Customization
 
-Você pode modificar livremente os scripts para se adequar ao seu ambiente ou preferências pessoais.
+You can freely modify the scripts to suit your environment or personal preferences.
 
-Por exemplo:
-- Alterar os comandos de compilação ou execução.
-- Adicionar suporte a novas linguagens.
-- Integrar variáveis de ambiente, argumentos e flags adicionais.
-- Ajustar caminhos e nomes de arquivos conforme o seu projeto.
+For example:
+- Change compilation or execution commands.
+- Add support for new languages.
+- Integrate environment variables, arguments, and additional flags.
+- Adjust file paths and names according to your project.
 
-Tudo foi feito para ser **simples de editar e expandir** — basta abrir o `tasks.json` ou os scripts (`.bat` / `.sh`) e adaptar.
+Everything is made to be **easy to edit and expand** — just open the `tasks.json` or the scripts (`.bat` / `.sh`) and adapt.
 
 ---
 
-## Como Usar
+## How to Use
 
 ### Windows
-1. Copie o `run.bat` e a pasta `.vscode` para o diretório do seu projeto.
-2. No VSCode, pressione `Ctrl + Shift + B` para executar a tarefa configurada.
-3. O script irá compilar e/ou executar o código automaticamente.
-4. Lembre que precise dos compiladores no path, **caso tenha o administrador** na maquina.
-5. **Caso não tenha o Administrador**, crie uma pasta em que você vai guardar os compiladores, recomendo `COMPILADORES` como nome, caso conntrario modifique no run.bat.
-6. Lembre de modificar o nome da pasta dos compiladores, no run.bat ou na pasta dos compiladores somente para funcionar, **caso não tenha o administrador**.
+1. Copy the `run.bat` file and the `.vscode` folder to your project directory.
+2. In VSCode, press `Ctrl + Shift + B` to run the configured task.
+3. The script will automatically compile and/or run your code.
+4. Remember that you need the compilers in your PATH if you **have administrator privileges** on the machine.
+5. **If you don't have Administrator privileges**, create a folder where you will store the compilers. I recommend naming it `COMPILADORES`, otherwise modify it in run.bat.
+6. Remember to modify the compiler folder name in run.bat or in the actual compiler folder for it to work, **if you don't have administrator privileges**.
 
 ### 🐧 Linux
-1. Copie o `run.sh` e a pasta `.vscode` para o diretório do seu projeto.
-2. Dê permissão de execução com:
+1. Copy the `run.sh` file and the `.vscode` folder to your project directory.
+2. Give execution permission with:
    ```bash
    sudo chmod +x run.sh
-
----
-
-## Observações
-
-- Os scripts são **independentes por sistema operacional** — você pode usar apenas o que precisar.
-- O `tasks.json` é compatível com **VSCode em qualquer plataforma**.
-- O repositório serve como modelo base, podendo ser clonado e modificado para uso pessoal.
-
----
-
-## Licença
-
-Este projeto está sob a licença **MIT**, permitindo uso, modificação e redistribuição livre, desde que os créditos sejam mantidos.
-
----
-
-
-### Feito por **Gabriel** 
-
-*Sinta-se livre para contribuir, sugerir melhorias ou adicionar suporte a novas linguagens!*
