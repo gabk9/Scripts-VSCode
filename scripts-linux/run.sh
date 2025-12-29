@@ -53,7 +53,7 @@ case "$ext" in
         echo "Executando JavaScript..."
         node "$arquivo"
         ;;
-    asm)
+    asm | s)
         echo "Montando e executando ASM..."
         out_file="$(basename "$nomeArquivo")"
         nasm -f elf64 "$arquivo" -o "${out_file}.o" || exit 1
