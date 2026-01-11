@@ -19,17 +19,17 @@ Each script is configured to automatically detect the language (when possible) a
 
 These scripts support multiple programming languages on both **Windows** and **Linux**:
 
-- 🟦 **C**
-- 🟩 **C++**
-- 🟨 **Python**
-- 🟪 **Java**
-- 🔵 **JavaScript / Node.js**
-- ⚪ **Assembly (NASM / x86-64)**
-- 🟥 **COBOL**
-- 🟫 **Fortran**
-- 🧩 **PHP**
-- 🩵 **GO**
-- 🟠 **Rust** *(Linux only)*
+- **C**
+- **C++**
+- **Python**
+- **Java**
+- **JavaScript / Node.js**
+- **Assembly (NASM / x86-64)**
+- **COBOL**
+- **Fortran**
+- **PHP**
+- **GO**
+- **Rust** *(Linux only)*
 
 ---
 
