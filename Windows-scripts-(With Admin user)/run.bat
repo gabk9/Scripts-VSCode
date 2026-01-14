@@ -80,13 +80,8 @@ REM ---------------------------
 if /i "%ext%"==".c" (
     echo Compiling C code...
 
-    REM If the file name is 'main', then it'll have a different compilation 
-    if /i "%fileName%"=="main" (
-        gcc "%file%" libs/utils.c libs/s_math.c libs/CheckCmd.c libs/terminal.c -o "%fileName%.exe" -Ilibs
-    ) else (
-        REM for the normal files
-        gcc "%file%" -o "%fileName%.exe"
-    )
+    REM for the normal files
+    gcc "%file%" -o "%fileName%.exe"
 
     REM Verification
     if errorlevel 1 (
