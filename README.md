@@ -29,7 +29,7 @@ These scripts support multiple programming languages on both **Windows** and **L
 - **Fortran**
 - **PHP**
 - **GO**
-- **Rust** *(Linux only)*
+- **Rust**
 
 ---
 
