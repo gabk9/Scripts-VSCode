@@ -1,18 +1,17 @@
 @echo off
-cls
 setlocal enabledelayedexpansion
 
+REM ---------------------------
+REM Check input
+REM ---------------------------
 if "%~1"=="" (
-    echo.
     echo ERROR: empty input
-    echo.
-    echo use:
-    echo     "run file" or "run path/file" 
+    echo Usage: run file.c or run path\file.c
     exit /b
 )
 
 REM ---------------------------
-REM MAIN VARIABLES
+REM Resolve full paths
 REM ---------------------------
 set "file=%~1"
 for %%I in ("%file%") do set "file=%%~fI"
@@ -21,10 +20,11 @@ set "ext=%~x1"
 set "dirFile=%~dp1"
 set "fileName=%~n1"
 
-REM DEBUG - show what's happening
+REM Debug info (optional)
 REM echo File: %file%
-echo Extension: %ext%
-echo.
+REM echo Directory: %dirFile%
+REM echo FileName: %fileName%
+REM echo Extension: %ext%
 
 REM ---------------------------
 REM MinGW path (edit if needed)
@@ -32,109 +32,79 @@ REM ---------------------------
 set "MINGW_BIN=C:\MinGW-w64\bin"
 set "PATH=%MINGW_BIN%;%PATH%"
 
-pushd "%dirFile%"
-
-REM ---------------------------
-REM ASM 64-bit
-REM ---------------------------
-if /i "%ext%"==".asm" (
-    echo Mounting...
-    nasm -f win64 "%file%" -o "%fileName%.obj"
-    if errorlevel 1 (
-        echo ERROR: ASM assembly failed
-        goto end
-    )
-    gcc "%fileName%.obj" -o "%fileName%.exe" -lmsvcrt -Wl,--subsystem,console
-    if errorlevel 1 (
-        echo ERROR: ASM link failed
-        goto end
-    )
-    "%fileName%.exe"
-    goto stop
+REM Move to file directory
+pushd "%dirFile%" || (
+    echo ERROR: Cannot enter directory "%dirFile%"
+    exit /b
 )
 
 REM ---------------------------
-REM ASM 64-bit
-REM ---------------------------
-if /i "%ext%"==".s" (
-    echo Mounting...
-    nasm -f win64 "%file%" -o "%fileName%.obj"
-    if errorlevel 1 (
-        echo ERROR: ASM assembly failed
-        goto end
-    )
-    gcc "%fileName%.obj" -o "%fileName%.exe" -lmsvcrt -Wl,--subsystem,console
-    if errorlevel 1 (
-        echo ERROR: ASM link failed
-        goto end
-    )
-    echo.
-    echo Running...
-    "%fileName%.exe"
-    goto stop
-)
-
-REM ---------------------------
-REM C
+REM C compilation
 REM ---------------------------
 if /i "%ext%"==".c" (
+    cls
     echo Compiling C code...
 
-    REM for the normal files
-    gcc "%file%" -o "%fileName%.exe"
+    REM Special compilation if main.c exists
+    if /i "%fileName%"=="main" (
+        REM Make sure libs exist
+        if not exist "libs\utils.c" (
+            echo ERROR: libs not found in "%dirFile%\libs"
+            goto end
+        )
+        gcc "%file%" "libs\utils.c" "libs\s_math.c" "libs\CheckCmd.c" "libs\terminal.c" -o "%fileName%.exe" -I"libs"
+    ) else (
+        gcc "%file%" -o "%fileName%.exe"
+    )
 
-    REM Verification
     if errorlevel 1 (
         echo ERROR: C compilation failed
         goto end
     )
 
-    echo.
     echo Running...
     "%fileName%.exe"
     goto stop
 )
 
-
 REM ---------------------------
 REM C++
 REM ---------------------------
 if /i "%ext%"==".cpp" (
+    cls
     echo Compiling C++...
     g++ "%file%" -o "%fileName%.exe"
     if errorlevel 1 (
         echo ERROR: C++ compilation failed
         goto end
     )
-    echo.
     echo Running...
     "%fileName%.exe"
     goto stop
 )
 
 REM ---------------------------
-REM RUST
+REM Rust
 REM ---------------------------
 if /i "%ext%"==".rs" (
-    echo Compiling rust...
+    cls
+    echo Compiling Rust...
     rustc "%file%" -o "%fileName%.exe"
     if errorlevel 1 (
         echo ERROR: Rust compilation failed
         goto end
     )
-    echo.
     echo Running...
     "%fileName%.exe"
     goto stop
 )
 
-
 REM ---------------------------
-REM PYTHON
+REM Python
 REM ---------------------------
 if /i "%ext%"==".py" (
-    echo.
-    echo Running python...
+    cls
+    echo Running Python...
     python "%file%"
     goto stop
 )
@@ -142,41 +112,124 @@ if /i "%ext%"==".py" (
 REM ---------------------------
 REM COBOL
 REM ---------------------------
-if /i "%ext%"Compiling COBOL... (
+if /i "%ext%"==".cob" (
+    cls
+    echo Compiling COBOL...
     cobc -x -o "%fileName%.exe" "%file%"
     if errorlevel 1 (
         echo ERROR: COBOL compilation failed
         goto end
     )
-    echo.
     echo Running...
     "%fileName%.exe"
     goto stop
 )
 
 REM ---------------------------
-REM COBOL
+REM ASM 64-bit
 REM ---------------------------
-if /i "%ext%"==".cobc" (
-    echo Executando Cobol...
-    cobc -x -o "%fileName%.exe" "%file%"
+if /i "%ext%"==".asm" (
+    cls
+    echo Assembling ASM...
+    nasm -f win64 "%file%" -o "%fileName%.obj"
     if errorlevel 1 (
-        echo ERROR: compilacao COBOL falhou
+        echo ERROR: ASM assembly failed
         goto end
     )
-    echo.
+    gcc "%fileName%.obj" -o "%fileName%.exe" -lmsvcrt -Wl,--subsystem,console
+    if errorlevel 1 (
+        echo ERROR: ASM link failed
+        goto end
+    )
+    echo Running...
+    "%fileName%.exe"
+    goto stop
+)
+
+if /i "%ext%"==".s" (
+    cls
+    echo Assembling ASM...
+    nasm -f win64 "%file%" -o "%fileName%.obj"
+    if errorlevel 1 (
+        echo ERROR: ASM assembly failed
+        goto end
+    )
+    gcc "%fileName%.obj" -o "%fileName%.exe" -lmsvcrt -Wl,--subsystem,console
+    if errorlevel 1 (
+        echo ERROR: ASM link failed
+        goto end
+    )
     echo Running...
     "%fileName%.exe"
     goto stop
 )
 
 REM ---------------------------
-REM JAVASCRIPT (Node)
+REM Java
+REM ---------------------------
+if /i "%ext%"==".java" (
+    cls
+    echo Compiling Java...
+    del /f /q "%fileName%.class" 2>nul
+    javac "%file%"
+    if errorlevel 1 (
+        echo ERROR: Java compilation failed
+        goto end
+    )
+    echo Running...
+    java "%fileName%"
+    goto stop
+)
+
+REM ---------------------------
+REM Go
+REM ---------------------------
+if /i "%ext%"==".go" (
+    cls
+    echo Compiling Go...
+    go build -o "%fileName%.exe" "%file%"
+    if errorlevel 1 (
+        echo ERROR: Go compilation failed
+        goto end
+    )
+    echo Running...
+    "%fileName%.exe"
+    goto stop
+)
+
+REM ---------------------------
+REM Fortran
+REM ---------------------------
+if /i "%ext%"==".f90" (
+    cls
+    echo Compiling Fortran...
+    gfortran "%file%" -o "%fileName%.exe"
+    if errorlevel 1 (
+        echo ERROR: Fortran compilation failed
+        goto end
+    )
+    echo Running...
+    "%fileName%.exe"
+    goto stop
+)
+
+REM ---------------------------
+REM JavaScript
 REM ---------------------------
 if /i "%ext%"==".js" (
-    echo.
+    cls
     echo Running JavaScript...
     node "%file%"
+    goto stop
+)
+
+REM ---------------------------
+REM PHP
+REM ---------------------------
+if /i "%ext%"==".php" (
+    cls
+    echo Running PHP...
+    php "%file%"
     goto stop
 )
 
@@ -184,91 +237,22 @@ REM ---------------------------
 REM HTML
 REM ---------------------------
 if /i "%ext%"==".html" (
-    echo.
+    cls
     echo Running HTML...
     start "" "%file%"
     goto stop
 )
 
 REM ---------------------------
-REM JAVA
-REM ---------------------------
-if /i "%ext%"==".java" (
-    echo Compiling Java...
-    del /f /q "%fileName%.class" 2>nul
-    javac --release 8 -Xlint:-options "%file%"
-    if errorlevel 1 (
-        echo ERROR: Java compilation failed
-        goto end
-    )
-    echo.
-    echo Running...
-    java "%fileName%"
-    goto stop
-)
-
-REM ---------------------------
-REM GO
-REM ---------------------------
-if /i "%ext%"==".go" (
-    echo Compiling golang...
-    go build -o "%fileName%.exe" "%file%"
-    if errorlevel 1 (
-        echo ERROR: Golang compilation failed
-        goto end
-    )
-    echo.
-    echo Running...
-    "%fileName%.exe"
-    goto stop
-)
-
-REM ---------------------------
-REM FORTRAN
-REM ---------------------------
-if /i "%ext%"==".f90" (
-    echo Compiling Fortran...
-    gfortran "%file%" -o "%fileName%.exe"
-    if errorlevel 1 (
-        echo ERROR: Fortran compilation failed
-        goto end
-    )
-    echo.
-    echo Running...
-    "%fileName%.exe"
-    goto stop
-)
-
-REM ---------------------------
-REM PHP (terminal + servidor)
-REM ---------------------------
-if /i "%ext%"==".php" (
-    echo -------------------------------
-    echo Running PHP in the terminal...
-    echo -------------------------------
-    php "%file%"
-    echo.
-    echo -------------------------------
-    echo Initializing PHP server...
-    echo Server: http://localhost:8000
-    echo (New Window)
-    echo -------------------------------
-    start "PHP SERVER" php -S localhost:8000 -t "%dirArquivo%"
-    goto stop
-)
-
-REM ---------------------------
-REM UNSUPPORTED EXTENSION
+REM Unsupported
 REM ---------------------------
 echo Unsupported extension: %ext%
 goto stop
 
 :end
 echo Process ended with errors.
-goto stop
 
 :stop
-echo.
-pause
 popd
+pause
 exit /b
