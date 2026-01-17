@@ -241,5 +241,4 @@ echo Process ended with errors.
 
 :stop
 popd
-pause
 exit /b
