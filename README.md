@@ -54,8 +54,6 @@ Everything is made to be **easy to edit and expand** — just open the `tasks.js
 2. In VSCode, press `Ctrl + Shift + B` to run the configured task.
 3. The script will automatically compile and/or run your code.
 4. Remember that you need the compilers in your PATH if you **have administrator privileges** on the machine.
-5. **If you don't have Administrator privileges**, create a folder where you will store the compilers. I recommend naming it `COMPILADORES`, otherwise modify it in run.bat.
-6. Remember to modify the compiler folder name in run.bat or in the actual compiler folder for it to work, **if you don't have administrator privileges**.
 
 ### Linux
 1. Copy the `run.sh` file and the `.vscode` folder to your project directory.
