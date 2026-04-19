@@ -4,7 +4,7 @@
         {
             "label": "Run current file",
             "type": "shell",
-            "command": "PUT HERE THE PATH TO THE run.bat",
+            "command": "PUT HERE THE PATH TO THE 'run.bat'",
             "args": ["${file}"],
             "group": {
                 "kind": "build",
