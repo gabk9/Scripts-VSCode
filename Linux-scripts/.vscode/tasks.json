@@ -1,11 +1,10 @@
-
 {
   "version": "2.0.0",
   "tasks": [
     {
       "label": "Run current file",
       "type": "shell",
-      "command": "PUT HERE THE PATH TO THE run.SH",
+      "command": "PUT HERE THE PATH TO THE 'run.sh'",
       "args": ["${file}"],
       "group": {
         "kind": "build",
