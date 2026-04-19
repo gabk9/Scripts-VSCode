@@ -9,7 +9,7 @@ This repository contains automation files (`tasks.json`, `run.bat`, `run.sh`) th
 
 - `.vscode/tasks.json` → Contains the automated tasks for VSCode.  
 - `run.bat` → Script for execution on **Windows**.  
-- `run.sh` → Script for execution on **Linux**.  
+- `run.sh` → Script for execution on **Linux** and **MacOS**. 
 
 Each script is configured to automatically detect the language (when possible) and run the appropriate command to **compile** and/or **execute** the code.
 
@@ -17,7 +17,7 @@ Each script is configured to automatically detect the language (when possible) a
 
 ## Supported Languages
 
-These scripts support multiple programming languages on both **Windows** and **Linux**:
+These scripts support multiple programming languages on both **Windows**, **Linux** and **MacOS**:
 
 - **C**
 - **C++**
@@ -55,7 +55,7 @@ Everything is made to be **easy to edit and expand** — just open the `tasks.js
 3. The script will automatically compile and/or run your code.
 4. Remember that you need the compilers in your PATH if you **have administrator privileges** on the machine.
 
-### Linux
+### Linux and MacOS
 1. Copy the `run.sh` file and the `.vscode` folder to your project directory.
 2. Give execution permission with:
    ```bash
